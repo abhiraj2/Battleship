@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+ <script>
+var coordp1 = [];
+var coordp2 = [];
+var guessp1;
+var guessp2;
+var guessesp1 = 0;
+var guessesp2 = 0;
+var hitsp1 = 0;
+var hitsp2 = 0;
+var isSunk1 = false;
+var isSunk2 = false;
+var bro = true;
+coordp1[0]= prompt("Enter the first coordinate player2 (0-18): ");
+while(bro){
+	if(coordp1[0] <0 || coordp1[0] > 18 || coordp1[0] == "" ){
+		coordp1[0] = prompt("Please enter a valid coordinate(0-18): ");
+	}
+	else{
+		bro = false;
+	}
+}
+coordp1[1]= +coordp1[0] +1;
+coordp1[2]= +coordp1[0] +2;
+alert("Your ship coordinates are: "+coordp1);
+bro = true;
+coordp2[0]= prompt("Enter the first coordinate player2 (0-18): ");
+while(bro){
+	if(coordp2[0] <0 || coordp2[0] > 18 || coordp2[0] == "" ){
+		coordp2[0] = prompt("Please enter a valid coordinate(0-18): ");
+	}
+	else{
+		bro = false;
+	}
+}
+coordp2[1]= +coordp2[0] +1;
+coordp2[2]= +coordp2[0] +2;
+alert("Your ship coordinates are: "+coordp2);
+var a1;
+var b1;
+var c1;
+var a2; 
+var b2;
+var c2;
+while(isSunk1== false && isSunk2 == false){
+	guessp1 = prompt("Player1 enter your guess(0-20): ");
+	if (guessp1 == a1|| guessp1 == b1|| guessp1 == c1){
+		alert("You messed up. Miss this turn.");
+	}
+	else{
+		if(guessp1 == coordp2[0]){
+			alert("Hit");
+			hitsp1++;
+			a1 = coordp2[0];
+		}
+		else if(guessp1 == coordp2[1]){
+			alert("Hit");
+			hitsp1++;
+			b1 = coordp2[1];
+		}
+		else if(guessp1 == coordp2[2]){
+			alert("Hit");
+			hitsp1++;
+			c1 = coordp2[2];
+		}
+		else{
+			alert("Miss");
+		}
+	}
+	guessesp1++;
+	alert(hitsp1);
+	if(hitsp1 == 3){
+		isSunk2 = true;
+	}
+	
+	guessp2 = prompt("Player2 enter your guess(0-20): ");
+	if (guessp2 == a2|| guessp2 == b2|| guessp2 == c2){
+		alert("You messed up. Miss this turn.");
+	}
+	else{
+		if(guessp2 == coordp1[0]){
+			alert("Hit");
+			hitsp2++;
+			a2 = coordp1[0];
+		}
+		else if(guessp2 == coordp1[1]){
+			alert("Hit");
+			hitsp2++;
+			b2 = coordp1[1];
+		}
+		else if(guessp2 == coordp1[2]){
+			alert("Hit");
+			hitsp2++;
+			c2 = coordp1[2];
+		}
+		else{
+			alert("Miss");
+		}
+	}
+	alert(hitsp2);
+	guessesp2++;
+	if(hitsp2 == 3){
+		isSunk1 = true;
+	}
+	
+
+}
+if (isSunk1 == true && isSunk2 == false){
+		alert("Player 2 wins.");
+	}
+	else if (isSunk2 == true && isSunk1 == false){
+		alert("Player 1 wins.");
+	}
+	else if(isSunk1 == true && isSunk2 == true){
+		alert("It's a tie.");
+	}
+	document.write("Guesses: " + guessesp1 + "<br>");
+	for(var i =0 ; i< 3; i++){
+		document.write("Player 1 Coordinate " + (i+1)+ ": " +coordp1[i] +"<br>" );
+		
+	}
+	for(var i =0 ; i< 3; i++){
+		document.write("Player 2 Coordinate " + (i+1)+ ": " +coordp2[i]+"<br>" );
+	}
+ </script>
+</head>
+<body>
+<center>
+<a href="index.html">Home</a>
+</center>
+</body>
+</html>
